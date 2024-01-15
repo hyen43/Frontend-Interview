@@ -10,13 +10,19 @@
 ### 동기적 비동기적 
 * 일반적으로 자바스크립트는 동기적인 언어이다.
 * 하지만, setTimoout, 이벤트리스너, ajax 함수를 사용하면 비동기 처리 가능
-[비동기적 처리]
+  [비동기적 처리]
 * 이벤트 발생 시, 호출할 콜백함수를 관리하고 실행 순서를 결정한다.
   (콜백함수? 특정 코드가 마무리 되기 전에 실행되지 않도록 하는 함수)
-* web API(대기실)에 이벤트를 보내놓고 실행 순서에 따라 큐에 집어 넣은 다음, stack이 비었을 때 Event loop를 사용하여 차례대로 스택으로 밀어넣는다.
   [콜백함수의 단점]
   * 콜백지옥: 비동기 처리를 중첩시켜서 코드를 작성하기 때문에, 예외처리가 어렵고 복잡도 증가
     => 해결하기 위해 Promise가 나옴
+
+* web API(대기실)에 이벤트를 보내놓고 실행 순서에 따라 Callback Queue에 집어 넣은 다음, Call stack이 비었을 때 Event loop를 사용하여 차례대로 스택으로 밀어넣는다.
+* Callback Queue에는 엄밀히 말하면 2가지 큐가 있고, 우선순위가 높은 것이 먼저 stack에 올려진다.(= 우선순위 큐)
+  * 마이크로태스크 큐(microtask queue) vs 테스크 큐(Task queue)
+    * microtask queue 👉 Promise
+    * task queue, macrotask queue 👉 setTimeout, setInterval
+      
 
 ### 콜백지옥 해결
 1. Promise
