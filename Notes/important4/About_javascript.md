@@ -18,10 +18,10 @@
     => 해결하기 위해 Promise가 나옴
 
 * web API(대기실)에 이벤트를 보내놓고 실행 순서에 따라 Callback Queue에 집어 넣은 다음, Call stack이 비었을 때 Event loop를 사용하여 차례대로 스택으로 밀어넣는다.
-* Callback Queue에는 엄밀히 말하면 2가지 큐가 있고, 우선순위가 높은 것이 먼저 stack에 올려진다.(= 우선순위 큐)
+* Callback Queue에는 엄밀히 말하면 2가지 큐가 있고, 우선순위가 높은 마이크로 테스크 큐가 먼저 stack에 올려진다.(= 우선순위 큐)
   * 마이크로태스크 큐(microtask queue) vs 테스크 큐(Task queue)
-    * microtask queue 👉 Promise
-    * task queue, macrotask queue 👉 setTimeout, setInterval
+    1. microtask queue 👉 Promise
+    2. task queue, macrotask queue 👉 setTimeout, setInterval
       
 
 ### 콜백지옥 해결
